@@ -14,7 +14,8 @@ You can follow same procedure in the official  AWS document [Getting started wit
    ```sh 
    curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
    chmod +x ./kubectl
-   mv ./kubectl /usr/local/bin 
+   mkdir -p $HOME/bin && cp ./eksctl $HOME/bin/eksctl && export PATH=$PATH:$HOME/bin
+   echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
    kubectl version --short --client
    ```
 2. Install and setup eksctl on Management Host   
@@ -22,8 +23,9 @@ You can follow same procedure in the official  AWS document [Getting started wit
    b. Move the extracted binary to /usr/local/bin   
    c. Test that your eksclt installation was successful   
    ```sh
-   curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-   sudo mv /tmp/eksctl /usr/local/bin
+   curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C 
+   mkdir -p $HOME/bin && cp ./eksctl $HOME/bin/eksctl && export PATH=$PATH:$HOME/bin
+   echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
    eksctl version
    ```
   
